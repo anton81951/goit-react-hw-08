@@ -23,6 +23,7 @@ body {
   display: flex;
   min-width: 320px;
   font-family: "Montserrat", sans-serif;
+  background: linear-gradient(45deg, #1a2633, #233142, #2c3a4b);background-color: #233142;
   
 }
 

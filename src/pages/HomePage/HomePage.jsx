@@ -5,7 +5,6 @@ export default function HomePage() {
   return (
     <>
       <DocumentTitle>Home</DocumentTitle>
-
       <div className={css.homePage}>
         <h1 className={css.title}>
           Open your personal phone book
