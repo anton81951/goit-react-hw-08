@@ -16,7 +16,6 @@ const ContactForm = () => {
 
   const handleSubmit = (values, actions) => {
     const newContact = {
-      id: Date.now().toString(),
       name: values.name,
       number: values.number,
     };
