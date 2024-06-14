@@ -6,6 +6,10 @@
   
   .username {
     font-weight: 700;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+
   }
   
   .btn {
@@ -24,4 +28,11 @@
 
 .btn:active {
     box-shadow: none;
+}
+
+@media screen and (min-width: 768px)
+{
+  .username {
+    font-size: 30px;
+  }
 }
