@@ -6,7 +6,7 @@ import { HiUser, HiPhone } from 'react-icons/hi';
 import Modal from '../Modal/Modal';
 import { deleteContact } from '../../redux/contacts/operations';
 
-const Contact = ({ contact }) => {
+const Contact = ({ contact, onEdit }) => {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -35,7 +35,15 @@ const Contact = ({ contact }) => {
           <span className={clsx(styles.nameSize)}>{contact.number}</span>
         </div>
       </address>
-      <form>
+      <form className={clsx(styles.buttonBox)}>
+        <button
+          type="button"
+          className={clsx(styles.buttonFrame)}
+          onClick={() => onEdit(contact)}
+          aria-label={`Edit ${contact.name}`}
+        >
+          Edit
+        </button>
         <button
           type="button"
           className={clsx(styles.buttonFrame)}
