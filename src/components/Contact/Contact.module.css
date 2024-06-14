@@ -6,6 +6,7 @@
     border-radius: 10px;
     padding: 20px;
     background-color: aliceblue;
+    max-width: 300px;
 }
 
 .nameBox {
@@ -38,6 +39,11 @@
 }
 
 @media screen and (min-width: 768px) {
+
+    .contactContainer {
+        max-width: 600px;
+    }
+
     .nameSize {
         font-size: 20px;
     }

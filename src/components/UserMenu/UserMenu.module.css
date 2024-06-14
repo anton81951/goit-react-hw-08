@@ -8,3 +8,20 @@
     font-weight: 700;
   }
   
+  .btn {
+    outline: none;
+    font-size: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    background-color: #233142;
+    color: aliceblue;
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: #455d7a;
+}
+
+
+.btn:active {
+    box-shadow: none;
+}

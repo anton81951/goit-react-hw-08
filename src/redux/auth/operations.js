@@ -3,6 +3,10 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://connections-api.goit.global/';
 
+//anton8
+//anton8@gmail.com
+
+
 const setAuthHeader = (token) => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   };
@@ -12,10 +16,10 @@ const setAuthHeader = (token) => {
   };
 
   export const register = createAsyncThunk(
-    'auth/register',
-    async (credentials, thunkAPI) => {
+    "auth/register",
+    async (newUser, thunkAPI) => {
       try {
-        const res = await axios.post('/users/signup', credentials);
+        const res = await axios.post("/users/signup", newUser);
         setAuthHeader(res.data.token);
         return res.data;
       } catch (error) {
@@ -25,10 +29,10 @@ const setAuthHeader = (token) => {
   );
 
   export const logIn = createAsyncThunk(
-    'auth/login',
-    async (credentials, thunkAPI) => {
+    "auth/login",
+    async (userInfo, thunkAPI) => {
       try {
-        const res = await axios.post('/users/login', credentials);
+        const res = await axios.post("/users/login", userInfo);
         setAuthHeader(res.data.token);
         return res.data;
       } catch (error) {
@@ -47,21 +51,18 @@ const setAuthHeader = (token) => {
   });
 
   export const refreshUser = createAsyncThunk(
-    'auth/refresh',
+    "auth/refresh",
     async (_, thunkAPI) => {
-      const state = thunkAPI.getState();
-      const persistedToken = state.auth.token;
+      const reduxState = thunkAPI.getState();
+      setAuthHeader(reduxState.auth.token);
   
-      if (persistedToken === null) {
-        return thunkAPI.rejectWithValue('Unable to fetch user');
-      }
-  
-      try {
-        setAuthHeader(persistedToken);
-        const res = await axios.get('/users/current');
-        return res.data;
-      } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
-      }
+      const res = await axios.get("/users/current");
+      return res.data;
+    },
+    {
+      condition(_, thunkAPI) {
+        const reduxState = thunkAPI.getState();
+        return reduxState.auth.token !== null;
+      },
     }
   );

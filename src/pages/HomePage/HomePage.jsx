@@ -9,6 +9,7 @@ export default function HomePage() {
         <h1 className={css.title}>
           Open your personal phone book
         </h1>
+        <p className={css.subtititle}>Register or login to start</p>
       </div>
     </>
   );

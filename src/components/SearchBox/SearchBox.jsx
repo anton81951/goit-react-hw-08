@@ -1,28 +1,44 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import styles from './SearchBox.module.css';
-import { setFilter } from '../../redux/filters/slice';
+import { setFilterName, setFilterNumber } from '../../redux/filters/slice';
 
 const SearchBox = () => {
   const dispatch = useDispatch();
-  const value = useSelector(state => state.filters.name);
+  const filterName = useSelector(state => state.filters.name);
+  const filterNumber = useSelector(state => state.filters.number);
 
-  const handleChange = event => {
-    dispatch(setFilter(event.target.value));
+  const handleChangeName = event => {
+    dispatch(setFilterName(event.target.value));
+  };
+
+  const handleChangeNumber = event => {
+    dispatch(setFilterNumber(event.target.value));
   };
 
   return (
-    <Formik initialValues={{ search: value }} onSubmit={() => {}}>
+    <Formik initialValues={{ searchName: filterName, searchNumber: filterNumber }} onSubmit={() => {}}>
       <Form className={styles.searchBox}>
-        <label htmlFor="search">Find contacts by name</label>
+        <label htmlFor="searchName">Find contacts by name</label>
         <Field
           className={styles.searchField}
           type="text"
-          name="search"
-          id="search"
+          name="searchName"
+          id="searchName"
           placeholder="Enter name"
-          value={value}
-          onChange={handleChange}
+          value={filterName}
+          onChange={handleChangeName}
+        />
+
+        <label htmlFor="searchNumber">Find contacts by number</label>
+        <Field
+          className={styles.searchField}
+          type="text"
+          name="searchNumber"
+          id="searchNumber"
+          placeholder="Enter number"
+          value={filterNumber}
+          onChange={handleChangeNumber}
         />
       </Form>
     </Formik>

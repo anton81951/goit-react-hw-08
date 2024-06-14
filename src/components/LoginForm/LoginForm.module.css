@@ -1,10 +1,21 @@
 .form {
     width: 320px;
   }
+
+  .subtititle {
+    font-size: 20px;
+    color: aliceblue;
+  }
   
   .label {
     display: flex;
     flex-direction: column;
     margin-bottom: 16px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .subtititle {
+      font-size: 30px;
+    }
   }
   
